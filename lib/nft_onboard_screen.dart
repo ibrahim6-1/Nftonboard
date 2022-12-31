@@ -8,18 +8,46 @@ class NftOnboardScreen extends StatefulWidget {
 }
 
 class _NftOnboardScreenState extends State<NftOnboardScreen> {
+  Widget pageViewControl() {
+    return Builder(builder: ((context) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          for (int i = 0; i < 3; i++)
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 6),
+              width: i == pageNumber ? 25 : 6,
+              height: 8,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50), 
+                  color: i == pageNumber? Colors.white: Colors.grey),
+            ),
+        ],
+      );
+    }));
+  }
+
+  PageController nextpage = PageController();
+   int pageNumber=0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(167, 32, 32, 30),
       body: PageView(
+        onPageChanged: (value) {
+          setState(() {
+            pageNumber = value;
+          });
+        },
+        controller: nextpage,
         children: [
           Column(
             children: [
               const SizedBox(height: 61),
               Image.asset("lib/images/1.png"),
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               const Text(
                 textAlign: TextAlign.center,
@@ -39,10 +67,14 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
                     fontFamily: "Gilroy Pro"),
               ),
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  nextpage.animateToPage(1,
+                      duration: Duration(milliseconds: 800),
+                      curve: Curves.easeIn);
+                },
                 child: Container(
                   width: 116,
                   height: 56,
@@ -54,19 +86,23 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
                     child: Text(
                       "Next",
                       style: TextStyle(
-                          color: Colors.white, fontSize: 18, fontFamily: "Gilroy"),
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontFamily: "Gilroy"),
                     ),
                   ),
                 ),
               ),
+              const SizedBox(height: 40),
+              pageViewControl(),
             ],
           ),
           Column(
             children: [
-              SizedBox(height: 61),
+              const SizedBox(height: 61),
               Image.asset("lib/images/2.png"),
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               const Text(
                 textAlign: TextAlign.center,
@@ -86,10 +122,14 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
                     fontFamily: "Gilroy Pro"),
               ),
               const SizedBox(
-                height: 40,
+                height: 35,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  nextpage.animateToPage(2,
+                      duration: Duration(milliseconds: 800),
+                      curve: Curves.easeIn);
+                },
                 child: Container(
                   width: 116,
                   height: 56,
@@ -101,11 +141,15 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
                     child: Text(
                       "Next",
                       style: TextStyle(
-                          color: Colors.white, fontSize: 18, fontFamily: "Gilroy"),
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontFamily: "Gilroy"),
                     ),
                   ),
                 ),
               ),
+              const SizedBox(height: 50),
+              pageViewControl(),
             ],
           ),
           Column(
@@ -113,7 +157,7 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
               SizedBox(height: 61),
               Image.asset("lib/images/3.png"),
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               const Text(
                 textAlign: TextAlign.center,
@@ -133,26 +177,34 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
                     fontFamily: "Gilroy Pro"),
               ),
               const SizedBox(
-                height: 40,
+                height: 35,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  nextpage.animateToPage(0,
+                      duration: Duration(milliseconds: 800),
+                      curve: Curves.easeIn);
+                },
                 child: Container(
-                  width: 116,
-                  height: 56,
+                  width: 161,
+                  height: 61,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(22),
                     color: Color.fromARGB(255, 83, 199, 214),
                   ),
                   child: Center(
                     child: Text(
-                      "Next",
+                      "Get Started",
                       style: TextStyle(
-                          color: Colors.white, fontSize: 18, fontFamily: "Gilroy"),
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontFamily: "Gilroy"),
                     ),
                   ),
                 ),
               ),
+              const SizedBox(height: 45),
+              pageViewControl(),
             ],
           ),
         ],
