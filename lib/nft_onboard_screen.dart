@@ -122,7 +122,7 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
                     fontFamily: "Gilroy Pro"),
               ),
               const SizedBox(
-                height: 35,
+                height: 50,
               ),
               InkWell(
                 onTap: () {
@@ -148,7 +148,7 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 35),
               pageViewControl(),
             ],
           ),
@@ -177,7 +177,7 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
                     fontFamily: "Gilroy Pro"),
               ),
               const SizedBox(
-                height: 35,
+                height: 45,
               ),
               InkWell(
                 onTap: () {
@@ -203,7 +203,7 @@ class _NftOnboardScreenState extends State<NftOnboardScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 45),
+              const SizedBox(height: 35),
               pageViewControl(),
             ],
           ),
